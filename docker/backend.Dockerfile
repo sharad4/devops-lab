@@ -18,7 +18,7 @@ COPY backend/ ./
 RUN rm -f bootstrap/cache/*.php \
  && composer dump-autoload --optimize --no-dev --no-scripts
 
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 ARG APP_VERSION=dev
 ENV APP_VERSION=${APP_VERSION} APP_ENV=production APP_DEBUG=false
 RUN apk add --no-cache nginx supervisor curl \
