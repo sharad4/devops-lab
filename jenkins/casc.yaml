@@ -1,0 +1,31 @@
+jenkins:
+  systemMessage: "DevOps Lab Jenkins (configured by JCasC)"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "${JENKINS_ADMIN_PASSWORD}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+unclassified:
+  location:
+    url: "${JENKINS_URL}"       # e.g. https://xxxx.ngrok-free.app/  (needed for GitHub webhooks & status links)
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "ghcr-creds"
+              username: "${GHCR_USER}"
+              password: "${GHCR_TOKEN}"     # PAT with write:packages
+              description: "GHCR push"
+          - usernamePassword:
+              scope: GLOBAL
+              id: "github-pat"
+              username: "${GHCR_USER}"
+              password: "${GHCR_TOKEN}"
+              description: "GitHub repo scan (repo, admin:repo_hook)"

@@ -1,0 +1,16 @@
+# cd jenkins && cp .env.example .env && docker compose -f docker-compose.jenkins.yml up -d --build
+services:
+  jenkins:
+    build: .
+    restart: unless-stopped
+    ports: ["8081:8080", "50000:50000"]
+    environment:
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD}
+      JENKINS_URL: ${JENKINS_URL:-http://localhost:8081/}
+      GHCR_USER: ${GHCR_USER}
+      GHCR_TOKEN: ${GHCR_TOKEN}
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  jenkins_home:

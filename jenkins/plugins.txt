@@ -1,0 +1,14 @@
+configuration-as-code
+workflow-aggregator
+git
+github
+github-branch-source
+docker-workflow
+credentials-binding
+ssh-agent
+junit
+pipeline-stage-view
+timestamper
+ws-cleanup
+build-timeout
+slack

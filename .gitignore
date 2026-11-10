@@ -1,0 +1,21 @@
+# secrets & env
+.env
+.env.*
+!.env.example
+*.pem
+id_rsa*
+# backend
+/backend/vendor/
+/backend/node_modules/
+/backend/storage/*.key
+/backend/.phpunit.result.cache
+# frontend
+/frontend/node_modules/
+/frontend/dist/
+# jenkins local
+/jenkins/jenkins_home/
+# misc
+.DS_Store
+.idea/
+.vscode/
+*.log
