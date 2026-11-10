@@ -26,7 +26,7 @@ jobs:
     outputs:
       tag: ${{ steps.vars.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: vars
         run: |
           echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
@@ -68,7 +68,7 @@ jobs:
       name: staging
       url: ${{ vars.STAGING_URL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Deploy over SSH
         env:
           SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -89,7 +89,7 @@ jobs:
       name: production          # configure "Required reviewers" on this environment => manual approval gate
       url: ${{ vars.PRODUCTION_URL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Deploy over SSH
         env:
           SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
